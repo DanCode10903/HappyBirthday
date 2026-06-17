@@ -3,82 +3,126 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Happy Birthday </title>
+<title>Happy Birthday Ilma</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 <style>
 body {
-  margin:0; height:100vh; background:#ffc0cb;
-  font-family:'Playfair Display', cursive;
-  display:flex; justify-content:center; align-items:center; overflow:hidden;
+  margin: 0; 
+  height: 100vh; 
+  background: #ffc0cb;
+  font-family: 'Playfair Display', cursive;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  overflow: hidden;
 }
-canvas {
-  position:fixed; top:0; left:0; width:100%; height:100%;
-  z-index:0; pointer-events:none;
-}
-.card {
-  position:relative; z-index:1;
-  background:#fff; border-radius:20px;
-  box-shadow:0 8px 30px rgba(0,0,0,0.2);
-  max-width:420px; width:90%; min-height:520px;
-  display:flex; flex-direction:column; overflow:hidden;
-  padding-bottom:60px; /* untuk ruang tombol musik */
-}
-.slide {
-  position:absolute; top:0; left:0; right:0; bottom:0;
-  display:flex; flex-direction:column;
-  opacity:0; pointer-events:none;
-}
-.slide.active {opacity:1; pointer-events:auto;}
-.content {
-  flex:1; padding:20px;
-  display:flex; flex-direction:column;
-  justify-content:center; align-items:center;
-  text-align:center; overflow-y:auto;
-}
-h1 {font-size:28px; margin:10px 0; color:#ff4d88;}
-p {font-size:20px; color:#333;}
-.pin-box {
-  display:flex; gap:10px; justify-content:center; margin:15px 0;
-}
-.pin-box input {
-  width:50px; height:60px; font-size:28px; text-align:center;
-  border-radius:10px; border:2px solid #ff4d88;
-}
-.error {color:#ff0000; margin-top:10px;}
-.keyboard .row {display:flex; justify-content:center; margin:5px 0;}
-.keyboard button {
-  width:60px; height:60px; margin:5px; border:none; border-radius:10px;
-  font-size:20px; background:#ff4d88; color:#fff; cursor:pointer;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2); transition:0.2s;
-}
-.keyboard button:active {transform:scale(0.9); background:#e60073;}
-img {max-width:80%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3); margin:15px 0;}
-.btn {
-  padding:10px 20px; border:none; border-radius:10px;
-  background:#ff4d88; color:#fff; font-size:18px; cursor:pointer;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2); transition:0.3s;
-}
-.btn:hover {background:#e60073;}
-.nav-btns {
-  display:flex; justify-content:space-between; gap:10px;
-  padding:12px 20px; border-top:1px solid #eee; background:#fff;
-}
-/* Animasi Slide */
-@keyframes slideInRight { from {transform:translateX(100%); opacity:0;} to {transform:translateX(0); opacity:1;} }
-@keyframes slideOutLeft { from {transform:translateX(0); opacity:1;} to {transform:translateX(-100%); opacity:0;} }
-@keyframes slideInLeft { from {transform:translateX(-100%); opacity:0;} to {transform:translateX(0); opacity:1;} }
-@keyframes slideOutRight { from {transform:translateX(0); opacity:1;} to {transform:translateX(100%); opacity:0;} }
-.slide-in-right {animation:slideInRight 0.6s forwards;}
-.slide-out-left {animation:slideOutLeft 0.6s forwards;}
-.slide-in-left {animation:slideInLeft 0.6s forwards;}
-.slide-out-right {animation:slideOutRight 0.6s forwards;}
 
-/* Tombol musik toggle */
+canvas {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  z-index: 0; 
+  pointer-events: none;
+}
+
+.card {
+  position: relative; 
+  z-index: 1;
+  background: #fff; 
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  max-width: 420px; 
+  width: 90%; 
+  min-height: 520px;
+  display: flex; 
+  flex-direction: column; 
+  overflow: hidden;
+  padding-bottom: 60px; /* untuk ruang tombol musik secara default */
+}
+
+.slide {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+  display: flex; 
+  flex-direction: column;
+  opacity: 0; 
+  pointer-events: none;
+}
+
+.slide.active {
+  opacity: 1; 
+  pointer-events: auto;
+}
+
+.content {
+  flex: 1; 
+  padding: 20px;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  text-align: center; 
+  overflow-y: auto;
+}
+
+h1 {font-size: 28px; margin: 10px 0; color: #ff4d88;}
+p {font-size: 20px; color: #333;}
+
+.pin-box {
+  display: flex; gap: 10px; justify-content: center; margin: 15px 0;
+}
+
+.pin-box input {
+  width: 50px; height: 60px; font-size: 28px; text-align: center;
+  border-radius: 10px; border: 2px solid #ff4d88;
+}
+
+.error {color: #ff0000; margin-top: 10px;}
+
+.keyboard .row {display: flex; justify-content: center; margin: 5px 0;}
+.keyboard button {
+  width: 60px; height: 60px; margin: 5px; border: none; border-radius: 10px;
+  font-size: 20px; background: #ff4d88; color: #fff; cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.2s;
+}
+.keyboard button:active {transform: scale(0.9); background: #e60073;}
+
+img {max-width: 80%; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); margin: 15px 0;}
+
+.btn {
+  padding: 10px 20px; border: none; border-radius: 10px;
+  background: #ff4d88; color: #fff; font-size: 18px; cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s;
+}
+.btn:hover {background: #e60073;}
+
+.nav-btns {
+  display: flex; justify-content: space-between; gap: 10px;
+  padding: 12px 20px; border-top: 1px solid #eee; background: #fff;
+}
+
+/* Animasi Slide */
+@keyframes slideInRight { from {transform: translateX(100%); opacity: 0;} to {transform: translateX(0); opacity: 1;} }
+@keyframes slideOutLeft { from {transform: translateX(0); opacity: 1;} to {transform: translateX(-100%); opacity: 0;} }
+@keyframes slideInLeft { from {transform: translateX(-100%); opacity: 0;} to {transform: translateX(0); opacity: 1;} }
+@keyframes slideOutRight { from {transform: translateX(0); opacity: 1;} to {transform: translateX(100%); opacity: 0;} }
+
+.slide-in-right {animation: slideInRight 0.6s forwards;}
+.slide-out-left {animation: slideOutLeft 0.6s forwards;}
+.slide-in-left {animation: slideInLeft 0.6s forwards;}
+.slide-out-right {animation: slideOutRight 0.6s forwards;}
+
+/* Tombol musik toggle untuk PC/Laptop */
 #musicToggle {
-  position: fixed; /* Diubah jadi fixed agar posisinya stabil di layar */
-  top: 50%; /* Posisi tengah secara vertikal */
-  right: 10%; /* Jarak dari sisi kanan layar (bisa kamu ubah misal 5% atau 50px kalau kurang pas) */
-  transform: translateY(-50%); /* Menyesuaikan agar benar-benar pas di tengah vertikal */
+  position: fixed; 
+  top: 50%; 
+  right: 10%; 
+  transform: translateY(-50%); 
   padding: 10px 20px; 
   border: none; 
   border-radius: 10px;
@@ -91,13 +135,20 @@ img {max-width:80%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3); m
   z-index: 10;
 }
 
-/* Tambahan: Agar di HP letaknya tidak menutupi kartu, kita kembalikan ke bawah jika layarnya kecil */
+/* Pengaturan khusus untuk layar HP agar tidak saling menutupi */
 @media (max-width: 768px) {
+  .card {
+    min-height: 580px; /* Tinggikan kartu putih di HP */
+    margin-bottom: 80px; /* Beri jarak bawah agar kartu tidak mentok ke tombol musik */
+  }
+
   #musicToggle {
     top: auto;
-    bottom: 20px;
+    bottom: 15px; /* Posisikan tombol musik benar-benar di bawah layar HP */
     right: 50%;
     transform: translateX(50%);
+    position: fixed; /* Kunci posisinya di layar paling bawah */
+    z-index: 999; /* Pastikan berada di lapisan paling atas */
   }
 }
 </style>
@@ -107,7 +158,6 @@ img {max-width:80%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3); m
 <canvas id="canvas"></canvas>
 
 <div class="card">
-  <!-- Slide 1 -->
   <div class="slide active" id="slide1">
     <div class="content">
       <h1>Masukkan PIN 🎂</h1>
@@ -144,12 +194,11 @@ img {max-width:80%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3); m
     </div>
   </div>
 
-  <!-- Slide 2 -->
   <div class="slide" id="slide2">
-    <div class="content" style="display: block; padding: 30px 20px 20px; overflow-y: auto; text-align: center;">
+    <div class="content">
       <h1>Selamat Ulang Tahun 🎉</h1>
       <img src="birthday.gif" alt="Happy Birthday">
-      <p style="margin: 0; font-size: 18px; line-height: 1.5;">Happy Birthday Ilmaaaaa...🥳🎂! Selamat menempuh hidup baru di stase-stase koas yang seru itu.</p>
+      <p>Happy Birthday Ilmaaaaa...🥳🎂! Selamat menempuh hidup baru di stase-stase koas yang seru itu. Semangat 2 tahun ke depan.</p>
     </div>
     <div class="nav-btns">
       <button class="btn" onclick="prevSlide()">⬅ Kembali</button>
@@ -157,12 +206,11 @@ img {max-width:80%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3); m
     </div>
   </div>
 
-  <!-- Slide 3 -->
   <div class="slide" id="slide3">
-    <div class="content" style="display: block; padding: 30px 20px 20px; overflow-y: auto; text-align: center;">
+    <div class="content">
       <h1>Doa & Harapan ✨</h1>
-      <img src="Ilma 1.jpg" alt="Doa dan Harapan">
-      <p style="margin: 0; font-size: 18px; line-height: 1.5;">Semoga semua target kamu tahun ini tercapai, pasiennya kooperatif semua biar kamu ga pusing dan lancar sampai pelantikan dokter gigi nanti.</p>
+      <img src="hope.gif" alt="Doa dan Harapan">
+      <p>Semoga semua target kamu tahun ini kecapai semua, lancar sampai pelantikan dokter gigi nanti dan pasiennya kooperatif semua!</p>
     </div>
     <div class="nav-btns">
       <button class="btn" onclick="prevSlide()">⬅ Kembali</button>
@@ -170,11 +218,10 @@ img {max-width:80%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3); m
     </div>
   </div>
 
-  <!-- Slide 4 -->
-<div class="slide" id="slide4">
+  <div class="slide" id="slide4">
     <div class="content" style="display: block; padding: 30px 20px 20px; overflow-y: auto; text-align: center;"> 
-      <img src="Shy cat.gif" alt="Foto Romantis" style="max-height: 240px; width: auto; max-width: 90%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3); margin: 0 auto 15px auto; display:block;">
-      <p style="margin: 0; font-size: 18px; line-height: 1.5;">Kasihan kan kalau kamu pusing gara-gara pasien yang ga kooperatif, nanti cantiknya berkurang 1%, sisa 99% doang. #EAAAKKK. Semangat terus ya!!! biar bisa lulus tepat waktu. Jangan lupa jaga kesehatan, Soalnya kalau kamu sakit nanti yang bikin aku senyum-senyum sendiri siapa? Eh, maksudnya pasien kamu (kan aku juga pasien)👉👈😗.</p>
+      <img src="anime pics.jpg" alt="Foto Romantis" style="max-height: 240px; width: auto; max-width: 90%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3); margin: 0 auto 15px auto; display:block;">
+      <p style="margin: 0; font-size: 18px; line-height: 1.5;">Kasihan kan kalau kamu pusing gara-gara pasien yang ga kooperatif, nanti cantiknya berkurang 1%, sisa 99% doang. #EAAAKKK. sehat-sehat terus ya!!! biar bisa lulus tahun depan. Soalnya kalau kamu sakit, nanti yang bikin aku senyum-senyum sendiri siapa? Eh, maksudnya biar pasien kamu ada yang nanganin 🫣.</p>
     </div>
     <div class="nav-btns"> 
       <button class="btn" onclick="prevSlide()">⬅ Kembali</button>
@@ -182,12 +229,10 @@ img {max-width:80%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3); m
     </div>
   </div>
 
-  <!-- Slide 5 -->
   <div class="slide" id="slide5">
-    <div class="content" style="display: block; padding: 30px 20px 20px; overflow-y: auto; text-align: center;">
-      <!-- <h1>Terima Kasih 🙏</h1> -->
-      <img src="Saraghae.gif" alt="Terima Kasih">
-      <p style="margin: 0; font-size: 18px; line-height: 1.5;">Tenang aja, kalau kamu butuh tempat sambat atau butuh orang buat dengerin cerita pasien yang aneh-aneh, aku siap sedia kok. Gratis, nggak pakai biaya admin.</p>
+    <div class="content">
+      <img src="thanks.gif" alt="Terima Kasih">
+      <p>Tenang aja, kalau kamu butuh tempat sambat atau butuh orang buat dengerin cerita pasien yang aneh-aneh, aku siap sedia kok. Gratis, nggak pakai biaya admin.</p>
     </div>
     <div class="nav-btns">
       <button class="btn" onclick="prevSlide()">⬅ Kembali</button>
@@ -195,12 +240,10 @@ img {max-width:80%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3); m
     </div>
   </div>
 
-    <!-- Slide 6 -->
   <div class="slide" id="slide6">
-    <div class="content" style="display: block; padding: 30px 20px 20px; overflow-y: auto; text-align: center;">
-      <!-- <h1>Salam</h1> -->
-      <img src="Ilma 3.jpg" alt="Salam">
-      <p style="margin: 0; font-size: 18px; line-height: 1.5;">Semoga next nya udah ga keseringan TREMOR lagi ya, calon dokter gigi favorit⭐⭐⭐⭐⭐. Tertanda, calon pasien yang paling rajin sikat gigi🪥, yang selalu nunggu kasusku di acc😭, yang paling semangat kalau lihat kamu senyum🫣. #EAAAKKKK.</p>
+    <div class="content">
+      <img src="birthday.gif" alt="Salam">
+      <p>Tetap bersinar ya, calon dokter gigi favorit. Tertanda, pasien yang paling rajin sikat gigi, yang selalu nunggu jadwal kontrol, yang paling semangat kalau lihat kamu senyum. #EAAAKKKK.</p>
     </div>
     <div class="nav-btns">
       <button class="btn" onclick="prevSlide()">⬅ Kembali</button>
@@ -208,12 +251,10 @@ img {max-width:80%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3); m
     </div>
   </div>
 
-    <!-- Slide 7 -->
   <div class="slide" id="slide7">
-    <div class="content" style="display: block; padding: 30px 20px 20px; overflow-y: auto; text-align: center;">
-      <!-- <h1>LAST</h1> -->
+    <div class="content">
       <img src="birthday.gif" alt="LAST">
-      <p style="margin: 0; font-size: 18px; line-height: 1.5;">Proud of You👏. I'm Gonna Be a Good Supporter For You</p>
+      <p>Proud of You. I'm Gonna Be a Good Supporter For You</p>
     </div>
     <div class="nav-btns" style="justify-content:center;">
       <button class="btn" onclick="prevSlide()">⬅ Kembali</button>
@@ -221,17 +262,19 @@ img {max-width:80%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3); m
   </div>
 </div>
 
-<!-- Tombol musik toggle -->
 <button id="musicToggle" onclick="toggleMusic()">▶ Play Musik</button>
 
 <script>
-let currentSlide=1;
-const slides=document.querySelectorAll('.slide');
-function animateSlides(oldIndex,newIndex){
-  const oldSlide=slides[oldIndex-1];
-  const newSlide=slides[newIndex-1];
-  slides.forEach(s=>s.classList.remove("slide-in-right","slide-out-left","slide-in-left","slide-out-right","active"));
-  if(newIndex>oldIndex){ 
+let currentSlide = 1;
+const slides = document.querySelectorAll('.slide');
+
+function animateSlides(oldIndex, newIndex) {
+  const oldSlide = slides[oldIndex-1];
+  const newSlide = slides[newIndex-1];
+  
+  slides.forEach(s => s.classList.remove("slide-in-right", "slide-out-left", "slide-in-left", "slide-out-right", "active"));
+  
+  if (newIndex > oldIndex) { 
     oldSlide.classList.add("slide-out-left");
     newSlide.classList.add("slide-in-right");
   } else {
@@ -239,47 +282,105 @@ function animateSlides(oldIndex,newIndex){
     newSlide.classList.add("slide-in-left");
   }
   newSlide.classList.add("active");
-  currentSlide=newIndex;
+  currentSlide = newIndex;
 }
-function checkPin(){
-  const inputs=document.querySelectorAll('#slide1 input');
-  const pin=[...inputs].map(i=>i.value).join('');
-  if(pin==="2004"){
-    animateSlides(1,2);
-    document.getElementById('errorMsg').innerText="";
+
+function checkPin() {
+  const inputs = document.querySelectorAll('#slide1 input');
+  const pin = [...inputs].map(i => i.value).join('');
+  if (pin === "2003") {
+    animateSlides(1, 2);
+    document.getElementById('errorMsg').innerText = "";
   } else {
-    document.getElementById('errorMsg').innerText="PIN salah, coba lagi!";
-    inputs.forEach(i=>i.value="");
+    document.getElementById('errorMsg').innerText = "PIN salah, coba lagi!";
+    inputs.forEach(i => i.value = "");
   }
 }
-function nextSlide(){if(currentSlide<7) animateSlides(currentSlide,currentSlide+1);}
-function prevSlide(){if(currentSlide>2) animateSlides(currentSlide,currentSlide-1);}
-function pressNum(num){
-  const inputs=document.querySelectorAll('#slide1 input');
-  for(let i=0;i<inputs.length;i++){if(inputs[i].value===""){inputs[i].value=num; break;}}
+
+// Batas slide diubah menjadi 7
+function nextSlide() { if(currentSlide < 7) animateSlides(currentSlide, currentSlide+1); }
+function prevSlide() { if(currentSlide > 2) animateSlides(currentSlide, currentSlide-1); }
+
+function pressNum(num) {
+  const inputs = document.querySelectorAll('#slide1 input');
+  for(let i=0; i<inputs.length; i++) { if(inputs[i].value === "") { inputs[i].value = num; break; } }
 }
-function deleteNum(){
-  const inputs=document.querySelectorAll('#slide1 input');
-  for(let i=inputs.length-1;i>=0;i--){if(inputs[i].value!==""){inputs[i].value=""; break;}}
+
+function deleteNum() {
+  const inputs = document.querySelectorAll('#slide1 input');
+  for(let i=inputs.length-1; i>=0; i--) { if(inputs[i].value !== "") { inputs[i].value = ""; break; } }
 }
 
 // Musik toggle
-let audio=new Audio("Kokiri.mp3"); audio.loop=true;
-let isPlaying=false;
-function toggleMusic(){
-  if(isPlaying){audio.pause(); isPlaying=false; document.getElementById('musicToggle').innerText="▶ Play Musik";}
-  else{audio.play(); isPlaying=true; document.getElementById('musicToggle').innerText="⏸ Stop Musik";}
+let audio = new Audio("Kokiri.mp3"); 
+audio.loop = true;
+let isPlaying = false;
+
+function toggleMusic() {
+  if (isPlaying) {
+    audio.pause(); 
+    isPlaying = false; 
+    document.getElementById('musicToggle').innerText = "▶ Play Musik";
+  } else {
+    audio.play(); 
+    isPlaying = true; 
+    document.getElementById('musicToggle').innerText = "⏸ Stop Musik";
+  }
 }
 
 // Partikel love
-const canvas=document.getElementById("canvas"); const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth; canvas.height=window.innerHeight;
-class Heart{constructor(){this.x=Math.random()*canvas.width; this.y=canvas.height+Math.random()*100; this.size=10+Math.random()*20; this.speed=0.5+Math.random()*1.5; this.alpha=0.5+Math.random()*0.5; this.color="rgba(255,0,100,"+this.alpha+")";}draw(){ctx.save();ctx.translate(this.x,this.y);ctx.fillStyle=this.color;ctx.beginPath();ctx.moveTo(0,-this.size/2);ctx.bezierCurveTo(this.size/2,-this.size,this.size,-this.size/4,0,this.size);ctx.bezierCurveTo(-this.size,-this.size/4,-this.size/2,-this.size,0,-this.size/2);ctx.closePath();ctx.fill();ctx.restore();}update(){this.y-=this.speed;if(this.y<-50){this.y=canvas.height+50;this.x=Math.random()*canvas.width;}this.draw();}}
-let hearts=[]; for(let i=0;i<40;i++){hearts.push(new Heart());}
-function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);hearts.forEach(h=>h.update()); requestAnimationFrame(animate);}
-animate(); window.addEventListener("resize",()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
+const canvas = document.getElementById("canvas"); 
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth; 
+canvas.height = window.innerHeight;
+
+class Heart {
+  constructor() {
+    this.x = Math.random() * canvas.width; 
+    this.y = canvas.height + Math.random() * 100; 
+    this.size = 10 + Math.random() * 20; 
+    this.speed = 0.5 + Math.random() * 1.5; 
+    this.alpha = 0.5 + Math.random() * 0.5; 
+    this.color = "rgba(255,0,100," + this.alpha + ")";
+  }
+  draw() {
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.moveTo(0, -this.size/2);
+    ctx.bezierCurveTo(this.size/2, -this.size, this.size, -this.size/4, 0, this.size);
+    ctx.bezierCurveTo(-this.size, -this.size/4, -this.size/2, -this.size, 0, -this.size/2);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+  update() {
+    this.y -= this.speed;
+    if (this.y < -50) {
+      this.y = canvas.height + 50;
+      this.x = Math.random() * canvas.width;
+    }
+    this.draw();
+  }
+}
+
+let hearts = []; 
+for(let i=0; i<40; i++) { hearts.push(new Heart()); }
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  hearts.forEach(h => h.update()); 
+  requestAnimationFrame(animate);
+}
+
+animate(); 
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth; 
+  canvas.height = window.innerHeight;
+});
 </script>
 
 </body>
 </html>
-
